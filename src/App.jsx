@@ -49,7 +49,7 @@ const App = () => {
     <div>
       <Notify errorMessage={errorMessage} />
       <button onClick={onLogout}>logout</button>
-      <Persons persons={result.data.allPersons} />
+      <Persons persons={result.data ? result.data.allPersons : []} />
       <PersonForm setError={notify} />
       <PhoneForm setError={notify} />
     </div>

@@ -6,15 +6,13 @@ const Person = require('./models/person')
 const resolvers = {
     Query: {
         personCount: async () => Person.collection.countDocuments(),
-        Query: {
-            allPersons: async (root, args) => {
-                if (!args.phone) {
-                    return Person.find({})
-                }
-
-                return Person.find({ phone: { $exists: args.phone === 'YES' } })
-            },
+        allPersons: async (root, args) => {
+            if (!args.phone) {
+                return Person.find({})
+            }
+            return Person.find({ phone: { $exists: args.phone === 'YES' } })
         },
+        // Move these inside the Query object:
         findPerson: async (root, args) => Person.findOne({ name: args.name }),
         me: (root, args, context) => {
             return context.currentUser

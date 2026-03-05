@@ -24,9 +24,6 @@ const PhoneForm = ({ setError }) => {
             setError(error.message)
         }
 
-
-        changeNumber({ variables: { name, phone } })
-
         setName('')
         setPhone('')
     }
